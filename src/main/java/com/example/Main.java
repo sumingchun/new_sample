@@ -79,7 +79,7 @@ public class Main {
 
       ArrayList<String> output = new ArrayList<String>();
       while (rs.next()) {
-        output.add("Read from DB: " + rs.getValue("name"));
+        output.add("Read from Staff: " + rs.getString("name"));
       }
 
       model.put("records", output);
