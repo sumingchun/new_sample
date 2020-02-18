@@ -75,7 +75,8 @@ public class Main {
       Statement stmt = connection.createStatement();
       stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
       stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-      ResultSet rs = stmt.executeQuery("SELECT StaffId__c,name,age__c FROM salesforce.staff__c");
+      stmt.execute("set search_path=salesforce, public;");
+      ResultSet rs = stmt.executeQuery("SELECT name FROM staff__c");
 
       ArrayList<String> output = new ArrayList<String>();
       while (rs.next()) {
