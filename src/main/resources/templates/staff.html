@@ -52,7 +52,7 @@
   </thead>
   <tbody>
     <tr th:each="Record:${Records}" >
-      <td th:text="${Record}"></td>
+      <td th:text="*{StaffId__c}"></td>
       <td th:text=""></td>
       <td th:text=""></td>
     </tr>
