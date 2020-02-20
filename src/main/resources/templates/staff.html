@@ -43,8 +43,8 @@
 
 
   <h1>Staff Output</h1>
-  <ul th:each="Name : ${Names}">
-    <li th:text="${Name}"/>
+  <ul th:each="item : ${items}">
+    <li th:text="${item.name}"/>
   </ul>
 </div>
 
@@ -57,8 +57,8 @@
     </tr>
   </thead>
   <tbody>
-    <tr th:each="staffId:${staffIds}" >
-      <td th:text="${staffId}"></td>
+    <tr th:each="item:${items}" >
+      <td th:text="${item.name}"></td>
       <td></td>
       <td></td>
     </tr>

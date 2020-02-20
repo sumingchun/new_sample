@@ -29,8 +29,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.ui.Model;
+
+import java.util.HashMap;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -94,31 +95,6 @@ public class Main {
   }
 
   @RequestMapping("/staff")
-  String staff(Map<String, Object> model) {
-    try (Connection connection = dataSource.getConnection()) {
-      Statement stmt = connection.createStatement();
-      //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-      //stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-      stmt.execute("set search_path=salesforce, public;");
-      ResultSet rs = stmt.executeQuery("SELECT StaffId__c,name,age__c FROM staff__c");
-
-      ArrayList<String> StaffId = new ArrayList<String>();
-      ArrayList<String> Name = new ArrayList<String>();
-      while (rs.next()) {
-        StaffId.add(rs.getString("StaffId__c"));
-        Name.add(rs.getString("name"));
-      }
-
-      model.put("staffIds", StaffId);
-      model.put("Names", Name);
-      return "staff";
-    } catch (Exception e) {
-      model.put("message", e.getMessage());
-      return "error";
-    }
-  }
-
-  @GetMapping("/staff")
   String staff(Model model) {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
@@ -127,18 +103,25 @@ public class Main {
       stmt.execute("set search_path=salesforce, public;");
       ResultSet rs = stmt.executeQuery("SELECT StaffId__c,name,age__c FROM staff__c");
 
+      ArrayList<Map<String, Object>> items = new ArrayList<>();
+      Map<String, Object> item = new HashMap<>();
       ArrayList<String> StaffId = new ArrayList<String>();
+      ArrayList<String> Name = new ArrayList<String>();
+      ArrayList<String> Age = new ArrayList<String>();
       while (rs.next()) {
         StaffId.add(rs.getString("StaffId__c"));
+        Name.add(rs.getString("name"));
+        Age.add(rs.getString("age__c"));
       }
+      item.put("staffIds",StaffId);
+      item.put("Names",Name);
+      item.put("Ages",Age);
+      items.add(item);
 
-      //model.put("staffIds", StaffId);
-      //model.addAttribute("staffForm", new StaffForm());
-      //List<Staff> staffs = rs;
-      //model.addAttribute("staffs", staffs);
+      model.addAttribute("items", items);
       return "staff";
     } catch (Exception e) {
-      //model.put("message", e.getMessage());
+      model.addAttribute("message", e.getMessage());
       return "error";
     }
   }
