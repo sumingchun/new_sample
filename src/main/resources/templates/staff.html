@@ -5,6 +5,39 @@
 
 
 <div class="container">
+  <h1>Staff Input</h1>
+  <div class="card-body">
+    <form th:method="post" th:action="@{/staffs}" th:object="${staff}">
+      <div class="form-group row">
+          <label class="col-md-2 control-label">Staff Id</label>
+          <div class="col-md-10">
+            <input class="form-control" type="text" name="StaffId" th:value="*{StaffId}" />
+            <!--<div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div> -->
+          </div>
+      </div>
+      <div class="form-group row">
+          <label class="col-md-2 control-label">name</label>
+          <div class="col-md-10">
+            <input class="form-control" type="text" name="name" th:value="*{name}"/>
+            <!--<div class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div> -->
+          </div>
+      </div>
+      <div class="form-group row">
+          <label class="col-md-2 control-label">age</label>
+          <div class="col-md-10">
+            <input class="form-control" type="text" name="age" th:value="*{age}" />
+            <!--<div class="text-danger" th:if="${#fields.hasErrors('vendor')}" th:errors="*{vendor}"></div> -->
+          </div>
+      </div>
+      <div class="form-group row">
+          <div class="offset-md-2 col-md-10">
+            <button class="btn btn-primary">新規</button>
+          </div>
+      </div>
+    </form>
+  </div>
+
+
   <h1>Staff Output</h1>
   <ul th:each="record : ${records}">
     <li th:text="${record}"/>
