@@ -98,14 +98,14 @@ public class Main {
       //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
       //stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
       stmt.execute("set search_path=salesforce, public;");
-      ResultSet rs = stmt.executeQuery("SELECT name FROM staff__c");
+      ResultSet rs = stmt.executeQuery("SELECT StaffId__c,name,age__c FROM staff__c");
 
-      ArrayList<String> output = new ArrayList<String>();
+      ArrayList<String> StaffId = new ArrayList<String>();
       while (rs.next()) {
-        output.add("Read from Staff: " + rs.getString("name"));
+        StaffId.add("Read from Staff: " + rs.getString("StaffId__c"));
       }
 
-      model.put("records", output);
+      model.put("staffIds", StaffId);
       return "staff";
     } catch (Exception e) {
       model.put("message", e.getMessage());

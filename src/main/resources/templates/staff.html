@@ -7,12 +7,12 @@
 <div class="container">
   <h1>Staff Input</h1>
   <div>
-      <div>
-          <div>
-            <label>Staff Id</label>
-            <input type="text" name="staffId" value="" />
-            <!--<div class="text-danger" th:if="${#fields.hasErrors('vendor')}" th:errors="*{vendor}"></div> -->
-          </div>
+    <div>
+        <div>
+          <label>Staff Id</label>
+          <input type="text" name="staffId" value="" />
+          <!--<div class="text-danger" th:if="${#fields.hasErrors('vendor')}" th:errors="*{vendor}"></div> -->
+        </div>
       </div>
       <div>
         <div>
@@ -37,8 +37,8 @@
 
 
   <h1>Staff Output</h1>
-  <ul th:each="record : ${records}">
-    <li th:text="${record}"/>
+  <ul th:each="record : ${staffIds}">
+    <li th:text="${staffId}"/>
   </ul>
 </div>
 
