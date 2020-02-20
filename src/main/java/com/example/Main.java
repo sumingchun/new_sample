@@ -101,11 +101,17 @@ public class Main {
       ResultSet rs = stmt.executeQuery("SELECT StaffId__c,name,age__c FROM staff__c");
 
       ArrayList<String> StaffId = new ArrayList<String>();
+      ArrayList<String> Name = new ArrayList<String>();
+      ArrayList<String> Age = new ArrayList<String>();
       while (rs.next()) {
-        StaffId.add("Read from Staff: " + rs.getString("StaffId__c"));
+        StaffId.add(rs.getString("StaffId__c"));
+        Name.add(rs.getString("name"));
+        Age.add(rs.getString("age__c"));
       }
 
       model.put("staffIds", StaffId);
+      model.put("names", Name);
+      model.put("ages", Age);
       return "staff";
     } catch (Exception e) {
       model.put("message", e.getMessage());

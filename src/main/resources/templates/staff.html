@@ -53,10 +53,8 @@
   <tbody>
     <tr th:each="staffId:${staffIds}" >
       <td th:text="${staffId}"></td>
-      <!--<td th:text="${name}"></td>
-      <td th:text="${age}"></td>-->
-      <td></td>
-      <td></td>
+      <td th:text="name:${names}"></td>
+      <td th:text="age:${ages}"></td>
     </tr>
   </tbody>
 </table>
