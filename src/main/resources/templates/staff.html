@@ -7,25 +7,25 @@
 <div class="container">
   <h1>Staff Input</h1>
   <div class="card-body">
-    <form th:method="post" th:action="@{/staffs}" th:object="${staff}">
+    <form th:method="post" th:action="@{/records}" th:object="${record}">
       <div class="form-group row">
           <label class="col-md-2 control-label">Staff Id</label>
           <div class="col-md-10">
-            <input class="form-control" type="text" name="StaffId" th:value="*{StaffId}" />
+            <input class="form-control" type="text" name="StaffId" th:value="" />
             <!--<div class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div> -->
           </div>
       </div>
       <div class="form-group row">
           <label class="col-md-2 control-label">name</label>
           <div class="col-md-10">
-            <input class="form-control" type="text" name="name" th:value="*{name}"/>
+            <input class="form-control" type="text" name="name" th:value=""/>
             <!--<div class="text-danger" th:if="${#fields.hasErrors('price')}" th:errors="*{price}"></div> -->
           </div>
       </div>
       <div class="form-group row">
           <label class="col-md-2 control-label">age</label>
           <div class="col-md-10">
-            <input class="form-control" type="text" name="age" th:value="*{age}" />
+            <input class="form-control" type="text" name="age" th:value="" />
             <!--<div class="text-danger" th:if="${#fields.hasErrors('vendor')}" th:errors="*{vendor}"></div> -->
           </div>
       </div>
