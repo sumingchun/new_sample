@@ -42,5 +42,24 @@
   </ul>
 </div>
 
+<table>
+  <thead>
+    <tr>
+      <th style="width: 20%">STaff Id</th>
+      <th style="width: 60%">Name</th>
+      <th style="width: 20%">Age</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="staffId:${staffIds}" >
+      <td th:text="${staffId}"></td>
+      <!--<td th:text="${name}"></td>
+      <td th:text="${age}"></td>-->
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+
 </body>
 </html>
