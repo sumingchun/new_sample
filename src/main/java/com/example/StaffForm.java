@@ -29,8 +29,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.ui.Model;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -103,42 +101,14 @@ public class Main {
       ResultSet rs = stmt.executeQuery("SELECT StaffId__c,name,age__c FROM staff__c");
 
       ArrayList<String> StaffId = new ArrayList<String>();
-      ArrayList<String> Name = new ArrayList<String>();
       while (rs.next()) {
         StaffId.add(rs.getString("StaffId__c"));
-        Name.add(rs.getString("name"));
       }
 
       model.put("staffIds", StaffId);
-      model.put("Names", Name);
       return "staff";
     } catch (Exception e) {
       model.put("message", e.getMessage());
-      return "error";
-    }
-  }
-
-  @GetMapping("/staff")
-  String staff(Model model) {
-    try (Connection connection = dataSource.getConnection()) {
-      Statement stmt = connection.createStatement();
-      //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-      //stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-      stmt.execute("set search_path=salesforce, public;");
-      ResultSet rs = stmt.executeQuery("SELECT StaffId__c,name,age__c FROM staff__c");
-
-      ArrayList<String> StaffId = new ArrayList<String>();
-      while (rs.next()) {
-        StaffId.add(rs.getString("StaffId__c"));
-      }
-
-      //model.put("staffIds", StaffId);
-      //model.addAttribute("staffForm", new StaffForm());
-      //List<Staff> staffs = rs;
-      //model.addAttribute("staffs", staffs);
-      return "staff";
-    } catch (Exception e) {
-      //model.put("message", e.getMessage());
       return "error";
     }
   }

@@ -9,36 +9,42 @@
   <div>
     <div>
         <div>
-          <label>Staff Id</label>
+          <div>
+            <label>Staff Id</label>
+          </div>
           <input type="text" name="staffId" value="" />
           <!--<div class="text-danger" th:if="${#fields.hasErrors('vendor')}" th:errors="*{vendor}"></div> -->
         </div>
       </div>
       <div>
         <div>
-          <label>name</label>
+          <div>
+            <label>Name</label>
+          </div>
           <input type="text" name="name" value="" />
           <!--<div class="text-danger" th:if="${#fields.hasErrors('vendor')}" th:errors="*{vendor}"></div> -->
         </div>
     </div>
     <div>
       <div>
-        <label>age</label>
+        <div>
+          <label>Age</label>
+        </div>
         <input type="text" name="age" value="" />
         <!--<div class="text-danger" th:if="${#fields.hasErrors('vendor')}" th:errors="*{vendor}"></div> -->
       </div>
     </div>
     <div>
       <div>
-        <button>新規</button>
+        <input type="submit" value="新規" />
       </div>
     </div>
   </div>
 
 
   <h1>Staff Output</h1>
-  <ul th:each="staffId : ${staffIds}">
-    <li th:text="${staffId}"/>
+  <ul th:each="name : ${Cames}">
+    <li th:text="${name}"/>
   </ul>
 </div>
 
