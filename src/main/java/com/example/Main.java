@@ -100,12 +100,12 @@ public class Main {
       stmt.execute("set search_path=salesforce, public;");
       ResultSet rs = stmt.executeQuery("SELECT StaffId__c,name,age__c FROM staff__c");
 
-      ArrayList<String> Record = new ArrayList<String>();
+      ArrayList<String> StaffId = new ArrayList<String>();
       while (rs.next()) {
-        Record.add(rs);
+        StaffId.add(rs.getString("StaffId__c"));
       }
 
-      model.put("Records", Record);
+      model.put("staffIds", StaffId);
       return "staff";
     } catch (Exception e) {
       model.put("message", e.getMessage());
