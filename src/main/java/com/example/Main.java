@@ -102,7 +102,7 @@ public class Main {
       //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
       //stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
       stmt.execute("set search_path=salesforce, public;");
-      ResultSet rs = stmt.executeQuery("SELECT staffid__c,name,age__c FROM staff__c");
+      ResultSet rs = stmt.executeQuery("SELECT staffid__c,name,age__c FROM staff__c order by staffid__c");
 
       ArrayList<Staff> output = new ArrayList<Staff>();
       while (rs.next()) {
