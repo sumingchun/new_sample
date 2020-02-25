@@ -102,8 +102,16 @@ public class Main {
       //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
       //stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
       stmt.execute("set search_path=salesforce, public;");
-      
-      model.addAttribute("records", stmt.executeQuery("SELECT name FROM staff__c"));
+      ResultSet rs = stmt.executeQuery("SELECT staffId__c,name,age__c FROM staff__c");
+
+      while (rs.next()) {
+        
+      }
+
+      Staff staff = new Staff();
+      staff.setName(rs.getString("name"));
+
+      model.addAttribute("records", staff);
       return "staff";
     } catch (Exception e) {
       model.addAttribute("message", e.getMessage());
