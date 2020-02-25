@@ -104,12 +104,10 @@ public class Main {
       stmt.execute("set search_path=salesforce, public;");
       ResultSet rs = stmt.executeQuery("SELECT staffId__c,name,age__c FROM staff__c");
 
-      while (rs.next()) {
-        
-      }
-
-      Staff staff = new Staff();
-      staff.setName(rs.getString("name"));
+      //while (rs.next()) {
+        Staff staff = new Staff();
+        staff.setName("Test");
+      //}
 
       model.addAttribute("records", staff);
       return "staff";
