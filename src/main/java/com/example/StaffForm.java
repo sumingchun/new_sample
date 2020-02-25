@@ -5,7 +5,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
-public class Staff {
+public class StaffForm {
   private Long id;
 
   @NotBlank(message="職員の名称を記入してください。")
