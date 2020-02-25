@@ -106,8 +106,9 @@ public class Main {
 
       ArrayList<Staff> output = new ArrayList<Staff>();
       while (rs.next()) {
+
         Staff staff = new Staff();
-        staff.setName("Test");
+        staff.setName(rs.getString("name"));
         output.add(staff);
       }
 
