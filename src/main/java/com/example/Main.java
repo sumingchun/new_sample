@@ -95,33 +95,23 @@ public class Main {
   }
 
   @RequestMapping("/staff")
-  String staff(Model model) {
+  String staff(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
       //stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
       stmt.execute("set search_path=salesforce, public;");
-      ResultSet rs = stmt.executeQuery("SELECT StaffId__c,name,age__c FROM staff__c");
+      ResultSet rs = stmt.executeQuery("SELECT name FROM staff__c");
 
-      ArrayList<Map<String, Object>> items = new ArrayList<>();
-      Map<String, Object> item = new HashMap<>();
-      ArrayList<String> StaffId = new ArrayList<String>();
-      ArrayList<String> Name = new ArrayList<String>();
-      ArrayList<String> Age = new ArrayList<String>();
+      ArrayList<String> output = new ArrayList<String>();
       while (rs.next()) {
-        StaffId.add(rs.getString("StaffId__c"));
-        Name.add(rs.getString("name"));
-        Age.add(rs.getString("age__c"));
+        output.add("Read from Staff: " + rs.getString("name"));
       }
-      item.put("staffIds",StaffId);
-      item.put("Names",Name);
-      item.put("Ages",Age);
-      items.add(item);
 
-      model.addAttribute("items", items);
+      model.put("records", output);
       return "staff";
     } catch (Exception e) {
-      model.addAttribute("message", e.getMessage());
+      model.put("message", e.getMessage());
       return "error";
     }
   }
