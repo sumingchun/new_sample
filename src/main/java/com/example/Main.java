@@ -38,6 +38,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
 
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import com.example.Staff;
+
 @Controller
 @SpringBootApplication
 public class Main {
@@ -91,24 +95,18 @@ public class Main {
     }
   }
 
-  @RequestMapping("/staff")
-  String staff(Map<String, Object> model) {
+  @GetMapping("/staff")
+  String staff(Model model) {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
       //stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
       stmt.execute("set search_path=salesforce, public;");
-      ResultSet rs = stmt.executeQuery("SELECT name FROM staff__c");
-
-      ArrayList<String> output = new ArrayList<String>();
-      while (rs.next()) {
-        output.add("Read from Staff: " + rs.getString("name"));
-      }
-
-      model.put("records", output);
+      
+      model.addAttribute("records", stmt.executeQuery("SELECT name FROM staff__c"));
       return "staff";
     } catch (Exception e) {
-      model.put("message", e.getMessage());
+      model.addAttribute("message", e.getMessage());
       return "error";
     }
   }
