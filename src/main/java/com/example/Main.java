@@ -104,12 +104,14 @@ public class Main {
       stmt.execute("set search_path=salesforce, public;");
       ResultSet rs = stmt.executeQuery("SELECT name FROM staff__c");
 
-      //while (rs.next()) {
+      ArrayList<Staff> output = new ArrayList<Staff>();
+      while (rs.next()) {
         Staff staff = new Staff();
         staff.setName("Test");
-      //}
+        output.add(staff);
+      }
 
-      model.addAttribute("records", staff);
+      model.addAttribute("records", output);
       return "staff";
     } catch (Exception e) {
       model.addAttribute("message", e.getMessage());
