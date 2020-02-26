@@ -155,7 +155,9 @@ public class Main {
 //  }
 
   @RequestMapping(value = "testform", method = RequestMethod.GET)
-  public String newStaff(@RequestParam(name = "text_staffId") String staffid, 
+  public String newStaff(@RequestParam(name = "text_sfid") String staffid, 
+                         @RequestParam(name = "text_flg") String staffid, 
+                         @RequestParam(name = "text_staffId") String staffid, 
                          @RequestParam(name = "text_name") String name,
                          @RequestParam(name = "text_age") String age,
                          Model model) {
