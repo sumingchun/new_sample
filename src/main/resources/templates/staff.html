@@ -20,21 +20,13 @@
 
 <div class="container">
   <h1>Staff Input</h1>
-  <form>
   <div>
     <div>
-      <div>
         <div>
-          <label>Sfid</label>
-        </div>
-        
-      </div>
-    </div>
-      <div>
           <div>
             <label>Staff Id</label>
           </div>
-          <input type="text" name="text_staffId" th:value="${record.staffId}" />
+          <input type="text" name="text_staffId" value="" />
         </div>
       </div>
       <div>
@@ -42,7 +34,7 @@
           <div>
             <label>Name</label>
           </div>
-          <input type="text" name="text_name" th:value="${record.name} />
+          <input type="text" name="text_name" value="" />
         </div>
     </div>
     <div>
@@ -50,7 +42,7 @@
         <div>
           <label>Age</label>
         </div>
-        <input type="text" name="text_age" th:value="${record.age} />
+        <input type="text" name="text_age" value="" />
       </div>
     </div>
     <div>
@@ -59,7 +51,6 @@
       </div>
     </div>
   </div>
-　</form>
 
   <h1>Staff Output</h1>
   <input type="button" onclick="location.href='./staff'" value="新規作成">
