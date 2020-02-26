@@ -82,7 +82,7 @@
     <tbody>
       <tr th:each="record : ${records}"} >
         <td><input type="submit" name="btn_edit" value="編集" th:attr="onclick='alert(\'' + ${record.sfid} + '\');'" /></td>
-        <td><input type="submit" name="btn_delete" value="削除" th:attr="onclick='location.href=\'./testform?text_sfid=&text_flag=3&text_staffId=&text_name=&text_age=\'" /></td>
+        <td><input type="submit" name="btn_delete" value="削除" th:attr="onclick='location.href='./testform?text_sfid=&text_flag=3&text_staffId=&text_name=&text_age='" /></td>
         <td th:text="${record.sfid}"></td>
         <td th:text="${record.staffId}"></td>
         <td th:text="${record.name}"></td>
