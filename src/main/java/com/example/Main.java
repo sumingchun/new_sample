@@ -156,7 +156,7 @@ public class Main {
 
   @RequestMapping(value = "testform", method = RequestMethod.GET)
   public String newStaff(@RequestParam(name = "text_sfid") String sfid, 
-                         @RequestParam(name = "text_flg") String flg, 
+                         @RequestParam(name = "text_flag") String flag, 
                          @RequestParam(name = "text_staffId") String staffid, 
                          @RequestParam(name = "text_name") String name,
                          @RequestParam(name = "text_age") String age,
@@ -165,6 +165,7 @@ public class Main {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
 
+      
         stmt.execute("set search_path=salesforce, public;");
         stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('"+ staffid +"', '"+ name +"', '"+ age +"');");
 
