@@ -20,6 +20,7 @@
 
   <script>
     function delStaff($sfid) {
+      window.confirm('このStaff削除しますか？');
       var linkStr = "/testform?text_sfid=" + $sfid + "&text_flag=3&text_staffId=&text_name=&text_age="
       document.location.href = linkStr;
     }
