@@ -153,16 +153,14 @@ public class Main {
 //    }
 //  }
 
-  @RequestMapping(value = "new", method = RequestMethod.POST)
-  public String newStaff(@Validated StaffForm form, BindingResult result,Model model) {
+  @RequestMapping(value = "/new", method = RequestMethod.POST)
+  public String newStaff(@ModelAttribute("CreateForm") StaffForm form, Model model) {
 
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
-      
-      
+
         stmt.execute("set search_path=salesforce, public;");
         stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('"+ form.getStaffId() +"', '"+ form.getName() +"', '"+ form.getAge() +"');");
-
 
         return "redirect:/staff";
 
