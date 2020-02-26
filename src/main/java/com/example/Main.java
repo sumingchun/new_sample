@@ -123,27 +123,27 @@ public class Main {
     }
   }
 
-  @GetMapping("staff")
-  public String newStaff(@ModelAttribute("staff") Staff staff, Model model) {
-    try (Connection connection = dataSource.getConnection()) {
-      Statement stmt = connection.createStatement();
-      //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-      stmt.execute("set search_path=salesforce, public;");
-      stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('0007', 'Cheese', '39');");
-      //ResultSet rs = stmt.executeQuery("SELECT sfid,staffid__c,name,age__c FROM staff__c order by staffid__c desc");
-
-        //staff.setSfid(rs.getString("sfid"));
-        //staff.setStaffId(rs.getString("staffid__c"));
-        //staff.setName(rs.getString("name"));
-        //staff.setAge(rs.getString("age__c"));
-
-      //model.addAttribute("records", output);
-      return "redirect:/staff";
-    } catch (Exception e) {
-      model.addAttribute("message", e.getMessage());
-      return "error";
-    }
-  }
+//  @GetMapping("staff")
+//  public String newStaff(@ModelAttribute("staff") Staff staff, Model model) {
+//    try (Connection connection = dataSource.getConnection()) {
+//      Statement stmt = connection.createStatement();
+//      //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
+//      stmt.execute("set search_path=salesforce, public;");
+//      stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('0007', 'Cheese', '39');");
+//      //ResultSet rs = stmt.executeQuery("SELECT sfid,staffid__c,name,age__c FROM staff__c order by staffid__c desc");
+//
+//        //staff.setSfid(rs.getString("sfid"));
+//        //staff.setStaffId(rs.getString("staffid__c"));
+//        //staff.setName(rs.getString("name"));
+//        //staff.setAge(rs.getString("age__c"));
+//
+//      //model.addAttribute("records", output);
+//      return "redirect:/staff";
+//    } catch (Exception e) {
+//      model.addAttribute("message", e.getMessage());
+//      return "error";
+//    }
+//  }
 
   @Bean
   public DataSource dataSource() throws SQLException {

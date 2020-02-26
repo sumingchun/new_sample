@@ -19,43 +19,9 @@
   </style>
 
 <div class="container">
-  <h1>Staff Input</h1>
-  <form method="post" th:action="@{/staff}" >
-  <div>
-    <div>
-        <div>
-          <div>
-            <label>Staff Id</label>
-          </div>
-          <input type="text" name="text_staffId" value="" />
-        </div>
-      </div>
-      <div>
-        <div>
-          <div>
-            <label>Name</label>
-          </div>
-          <input type="text" name="text_name" value="" />
-        </div>
-    </div>
-    <div>
-      <div>
-        <div>
-          <label>Age</label>
-        </div>
-        <input type="text" name="text_age" value="" />
-      </div>
-    </div>
-    <div>
-      <div>
-        <input type="submit" name="btn_save" value="保存" />
-      </div>
-    </div>
-  </div>
-  </form>
 
   <h1>Staff Output</h1>
-  <input type="button" onclick="location.href='./staff'" value="新規作成">
+  <input type="button" onclick="location.href='./new'" value="新規作成">
   <table>
     <thead>
       <tr style="background-color:black">
