@@ -164,12 +164,18 @@ public class Main {
 
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
+      stmt.execute("set search_path=salesforce, public;");
 
-      
-        stmt.execute("set search_path=salesforce, public;");
+      if (flag == "1"){
         stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('"+ staffid +"', '"+ name +"', '"+ age +"');");
+      }else if(flag == "2"){
 
-        return "redirect:/staff";
+      }
+      else if(flag == "3"){
+        stmt.executeUpdate("Delete from staff__c where sfid = '"+ sfid +"';");
+      }
+      
+      return "redirect:/staff";
 
     } catch (Exception e) {
       model.addAttribute("message", e.getMessage());
