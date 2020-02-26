@@ -155,13 +155,16 @@ public class Main {
 //  }
 
   @RequestMapping(value = "testform", method = RequestMethod.GET)
-  public String newStaff(@RequestParam(name = "text_name") String name, Model model) {
+  public String newStaff(@RequestParam(name = "text_staffId") String staffid, 
+  @RequestParam(name = "text_name") String name,
+  @RequestParam(name = "text_age") String age,
+                          Model model) {
 
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
 
         stmt.execute("set search_path=salesforce, public;");
-        stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('0011', '"+ name +"', '66');");
+        stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('"+ staffid +"', '"+ name +"', '"+ age +"');");
 
         return "rstaff";
 
