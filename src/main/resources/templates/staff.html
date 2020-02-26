@@ -26,7 +26,7 @@
           <div>
             <label>Staff Id</label>
           </div>
-          <input type="text" name="staffId" value="" />
+          <input type="text" name="text_staffId" value="" />
           <!--<div class="text-danger" th:if="${#fields.hasErrors('vendor')}" th:errors="*{vendor}"></div> -->
         </div>
       </div>
@@ -35,7 +35,7 @@
           <div>
             <label>Name</label>
           </div>
-          <input type="text" name="name" value="" />
+          <input type="text" name="text_name" value="" />
           <!--<div class="text-danger" th:if="${#fields.hasErrors('vendor')}" th:errors="*{vendor}"></div> -->
         </div>
     </div>
@@ -44,19 +44,19 @@
         <div>
           <label>Age</label>
         </div>
-        <input type="text" name="age" value="" />
+        <input type="text" name="text_age" value="" />
         <!--<div class="text-danger" th:if="${#fields.hasErrors('vendor')}" th:errors="*{vendor}"></div> -->
       </div>
     </div>
     <div>
       <div>
-        <input type="submit" value="保存" />
+        <input type="submit" name="btn_save" value="保存" />
       </div>
     </div>
   </div>
 
   <h1>Staff Output</h1>
-  <input type="submit" value="新規" />
+  <input type="submit" name="btn_new" value="新規" />
   <table>
     <thead>
       <tr style="background-color:black">
@@ -64,13 +64,13 @@
         <th style="width: 50px"><font color="#FFFFFF">Delete</font></th>
         <th style="width: 100px"><font color="#FFFFFF">Staff Id</font></th>
         <th style="width: 150px"><font color="#FFFFFF">Name</font></th>
-        <th style="width: 50px"><font color="#FFFFFF">Ages</font></th>
+        <th style="width: 50px"><font color="#FFFFFF">Age</font></th>
       </tr>
     </thead>
     <tbody>
       <tr th:each="record : ${records}"} >
-        <td><input type="submit" value="編集" /></td>
-        <td><input type="submit" value="削除" /></td>
+        <td><input type="submit" name="btn_edit" value="編集" /></td>
+        <td><input type="submit" name="btn_delete" value="削除" /></td>
         <td th:text="${record.staffId}"></td>
         <td th:text="${record.name}"></td>
         <td th:text="${record.age}"></td>
