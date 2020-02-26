@@ -156,9 +156,9 @@ public class Main {
 
   @RequestMapping(value = "testform", method = RequestMethod.GET)
   public String newStaff(@RequestParam(name = "text_staffId") String staffid, 
-  @RequestParam(name = "text_name") String name,
-  @RequestParam(name = "text_age") String age,
-                          Model model) {
+                         @RequestParam(name = "text_name") String name,
+                         @RequestParam(name = "text_age") String age,
+                         Model model) {
 
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
@@ -166,7 +166,7 @@ public class Main {
         stmt.execute("set search_path=salesforce, public;");
         stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('"+ staffid +"', '"+ name +"', '"+ age +"');");
 
-        return "rstaff";
+        return "redirect:/staff";
 
     } catch (Exception e) {
       model.addAttribute("message", e.getMessage());
