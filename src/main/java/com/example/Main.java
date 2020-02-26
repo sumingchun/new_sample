@@ -147,7 +147,7 @@ public class Main {
   @GetMapping("new")
   public String newStaff(@ModelAttribute("staff") Staff staff, Model model) {
     
-    return "home";
+    return "staff";
   }
 
   @Bean
