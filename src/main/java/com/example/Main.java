@@ -44,6 +44,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @SpringBootApplication
@@ -153,16 +154,16 @@ public class Main {
 //    }
 //  }
 
-  @RequestMapping(value = "/new", method = RequestMethod.POST)
-  public String newStaff(@ModelAttribute("CreateForm") StaffForm form, Model model) {
+  @RequestMapping(value = "testform", method = RequestMethod.Get)
+  public String newStaff(@RequestParam(name = "text_name") String name, Model model) {
 
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
 
         stmt.execute("set search_path=salesforce, public;");
-        stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('"+ form.getStaffId() +"', '"+ form.getName() +"', '"+ form.getAge() +"');");
+        stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('0011', '"+ name +"', '66');");
 
-        return "redirect:/staff";
+        return "rstaff";
 
     } catch (Exception e) {
       model.addAttribute("message", e.getMessage());
