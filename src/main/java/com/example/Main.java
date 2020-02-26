@@ -107,7 +107,7 @@ public class Main {
       ArrayList<Staff> output = new ArrayList<Staff>();
       while (rs.next()) {
         Staff staff = new Staff();
-        staff.setSfid(rs.getLong("sfid"));
+        staff.setSfid(rs.getString("sfid"));
         staff.setStaffId(rs.getString("staffid__c"));
         staff.setName(rs.getString("name"));
         staff.setAge(rs.getString("age__c"));
