@@ -20,6 +20,7 @@
 
 <div class="container">
   <h1>Staff Input</h1>
+  <form th:method="post" th:action="@{/records}" th:object="${record}">
   <div>
     <div>
       <div>
@@ -58,6 +59,7 @@
       </div>
     </div>
   </div>
+　</form>
 
   <h1>Staff Output</h1>
   <input type="button" onclick="location.href='./staff'" value="新規作成">
