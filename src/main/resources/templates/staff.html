@@ -23,6 +23,18 @@
   <form method="get" th:action="testform" >
   <div>
     <div>
+      <div>
+        <div>
+            <label>SFID</label>
+        </div>
+          <label name="text_sfid">Empty</label>
+      </div>
+      <div>
+        <div>
+            <label>Flag</label>
+        </div>
+          <label name="text_flag">1</label>
+      </div>
         <div>
           <div>
             <label>Staff Id</label>
@@ -69,8 +81,8 @@
     </thead>
     <tbody>
       <tr th:each="record : ${records}"} >
-        <td><input type="submit" name="btn_edit" value="編集" th:attr="onclick='alert(' + ${record.staffId} + ');'" /></td>
-        <td><input type="submit" name="btn_delete" value="削除" th:attr="onclick='alert(' + ${record.staffId} + ');'" /></td>
+        <td><input type="submit" name="btn_edit" value="編集" th:attr="onclick='alert(' + ${record.sfid} + ');'" /></td>
+        <td><input type="submit" name="btn_delete" value="削除" th:attr="onclick='alert(' + ${record.sfid} + ');'" /></td>
         <td th:text="${record.sfid}"></td>
         <td th:text="${record.staffId}"></td>
         <td th:text="${record.name}"></td>
