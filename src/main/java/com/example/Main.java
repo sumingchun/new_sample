@@ -95,14 +95,14 @@ public class Main {
     }
   }
 
-  @GetMapping("/staff")
+  @RequestMapping("/staff")
   String staff(Model model) {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
       //stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
       stmt.execute("set search_path=salesforce, public;");
-      ResultSet rs = stmt.executeQuery("SELECT staffid__c,name,age__c FROM staff__c order by staffid__c");
+      ResultSet rs = stmt.executeQuery("SELECT staffid__c,name,age__c FROM staff__c order by staffid__c desc");
 
       ArrayList<Staff> output = new ArrayList<Staff>();
       while (rs.next()) {
