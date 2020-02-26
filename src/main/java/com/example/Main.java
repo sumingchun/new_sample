@@ -154,7 +154,7 @@ public class Main {
 //    }
 //  }
 
-  @RequestMapping(value = "testform", method = RequestMethod.Get)
+  @RequestMapping(value = "testform", method = RequestMethod.GET)
   public String newStaff(@RequestParam(name = "text_name") String name, Model model) {
 
     try (Connection connection = dataSource.getConnection()) {
