@@ -20,14 +20,21 @@
 
 <div class="container">
   <h1>Staff Input</h1>
+  <form th:method="post" th:action="@{/items}" th:object="${item}">
   <div>
     <div>
+      <div>
         <div>
+          <label>Sfid</label>
+        </div>
+        <p th:value="${record.sfid}"></p>
+      </div>
+    </div>
+      <div>
           <div>
             <label>Staff Id</label>
           </div>
-          <input type="text" name="text_staffId" value="" />
-          <!--<div class="text-danger" th:if="${#fields.hasErrors('vendor')}" th:errors="*{vendor}"></div> -->
+          <input type="text" name="text_staffId" th:value="${record.staffId}" />
         </div>
       </div>
       <div>
@@ -35,8 +42,7 @@
           <div>
             <label>Name</label>
           </div>
-          <input type="text" name="text_name" value="" />
-          <!--<div class="text-danger" th:if="${#fields.hasErrors('vendor')}" th:errors="*{vendor}"></div> -->
+          <input type="text" name="text_name" th:value="${record.name} />
         </div>
     </div>
     <div>
@@ -44,8 +50,7 @@
         <div>
           <label>Age</label>
         </div>
-        <input type="text" name="text_age" value="" />
-        <!--<div class="text-danger" th:if="${#fields.hasErrors('vendor')}" th:errors="*{vendor}"></div> -->
+        <input type="text" name="text_age" th:value="${record.age} />
       </div>
     </div>
     <div>
@@ -54,9 +59,10 @@
       </div>
     </div>
   </div>
+　</form>
 
   <h1>Staff Output</h1>
-  <input type="button" onclick="location.href='./staff.html'" value="新規作成">
+  <input type="button" onclick="location.href='./staff'" value="新規作成">
   <table>
     <thead>
       <tr style="background-color:black">
