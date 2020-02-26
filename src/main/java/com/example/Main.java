@@ -159,17 +159,13 @@ public class Main {
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       
-      if (result.hasErrors()) {
-        return "staff";
-      }
-      else
-      {
+      
         stmt.execute("set search_path=salesforce, public;");
         stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('"+ form.getStaffId() +"', '"+ form.getName() +"', '"+ form.getAge() +"');");
 
-        //return "new";
+
         return "redirect:/staff";
-      }
+
     } catch (Exception e) {
       model.addAttribute("message", e.getMessage());
       return "error";
