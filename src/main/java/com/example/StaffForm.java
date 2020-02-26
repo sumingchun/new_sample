@@ -6,7 +6,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 public class StaffForm {
-  private Long id;
 
   @NotBlank(message="職員の名称を記入してください。")
   private String name;
@@ -17,14 +16,6 @@ public class StaffForm {
 
   @Size(max=3, message="年齢は3桁数字を超えないでください。")
   private String age;
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
 
   public String getName() {
     return name;
