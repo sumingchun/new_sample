@@ -176,7 +176,7 @@ public class Main {
         
       }
       
-      model.addAttribute("message", flag == "3");
+      model.addAttribute("message", flag.equals("3"));
       return "error";
       //return "redirect:/staff";
 
