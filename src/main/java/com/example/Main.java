@@ -40,7 +40,8 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.ui.Model;
-import com.example.StaffForm;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Controller
 @SpringBootApplication
@@ -122,6 +123,27 @@ public class Main {
     }
   }
 
+  @GetMapping("staff")
+  public String newStaff(@ModelAttribute("staff") Staff staff, Model model) {
+    try (Connection connection = dataSource.getConnection()) {
+      Statement stmt = connection.createStatement();
+      //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
+      stmt.execute("set search_path=salesforce, public;");
+      stmt.executeUpdate("INSERT INTO products (staffid__c, name, age__c) VALUES ('0007', 'Cheese', '39');");
+      //ResultSet rs = stmt.executeQuery("SELECT sfid,staffid__c,name,age__c FROM staff__c order by staffid__c desc");
+
+        //staff.setSfid(rs.getString("sfid"));
+        //staff.setStaffId(rs.getString("staffid__c"));
+        //staff.setName(rs.getString("name"));
+        //staff.setAge(rs.getString("age__c"));
+
+      //model.addAttribute("records", output);
+      return "staff";
+    } catch (Exception e) {
+      model.addAttribute("message", e.getMessage());
+      return "error";
+    }
+  }
 
   @Bean
   public DataSource dataSource() throws SQLException {
