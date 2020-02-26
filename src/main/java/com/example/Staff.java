@@ -2,7 +2,7 @@ package com.example;
 
 public class Staff {
 
-    private Long sfid;
+    private String sfid;
     
     private String name;
     
@@ -10,11 +10,11 @@ public class Staff {
     
     private String staffId;
 
-    public Long getSfid() {
+    public String getSfid() {
         return sfid;
     }
 
-    public void setSfid(Long sfid) {
+    public void setSfid(String sfid) {
         this.sfid = sfid;
     }
 
