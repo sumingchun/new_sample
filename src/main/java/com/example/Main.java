@@ -42,6 +42,8 @@ import java.util.Map;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.validation.BindingResult;
 
 @Controller
 @SpringBootApplication
@@ -150,14 +152,15 @@ public class Main {
 //      return "error";
 //    }
 //  }
-  @GetMapping("new")
-  public String newStaff(@ModelAttribute StaffForm form,Model model) {
+
+  @RequestMapping(value = "new", method = RequestMethod.POST)
+  public String newStaff(@Validated StaffForm form, BindingResult result,Model model) {
 
     try (Connection connection = dataSource.getConnection()) {
       Statement stmt = connection.createStatement();
       
-      if (form.getStaffId() == "") {
-        return "new";
+      if (result.hasErrors()) {
+        return "staff";
       }
       else
       {
