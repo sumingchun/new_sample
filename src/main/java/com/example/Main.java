@@ -96,6 +96,12 @@ public class Main {
     }
   }
 
+  @ModelAttribute // (2)
+  public StaffForm setUpStaffForm() {
+    StaffForm form = new StaffForm();
+    return form;
+  }
+
   @RequestMapping("/staff")
   String staff(Model model) {
     try (Connection connection = dataSource.getConnection()) {
@@ -145,9 +151,23 @@ public class Main {
 //    }
 //  }
   @GetMapping("new")
-  public String newStaff(@ModelAttribute("staff") Staff staff, Model model) {
-    
-    return "redirect:/staff";
+  public String newStaff(@ModelAttribute StaffForm form,Model model) {
+
+    try (Connection connection = dataSource.getConnection()) {
+      Statement stmt = connection.createStatement();
+      
+      if (form.getStaffId() == "") {
+        return "new";
+     }
+
+      stmt.execute("set search_path=salesforce, public;");
+      stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('0008', 'Cheese', '39');");
+
+      return "redirect:/staff";
+    } catch (Exception e) {
+      model.addAttribute("message", e.getMessage());
+      return "error";
+    }
   }
 
   @Bean
