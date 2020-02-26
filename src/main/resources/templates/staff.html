@@ -59,6 +59,7 @@
       <tr style="background-color:black">
         <th style="width: 50px"><font color="#FFFFFF">Edit</font></th>
         <th style="width: 50px"><font color="#FFFFFF">Delete</font></th>
+        <th style="width: 100px"><font color="#FFFFFF">Sfid</font></th>
         <th style="width: 100px"><font color="#FFFFFF">Staff Id</font></th>
         <th style="width: 150px"><font color="#FFFFFF">Name</font></th>
         <th style="width: 50px"><font color="#FFFFFF">Age</font></th>
@@ -68,6 +69,7 @@
       <tr th:each="record : ${records}"} >
         <td><input type="submit" name="btn_edit" value="編集" /></td>
         <td><input type="submit" name="btn_delete" value="削除" /></td>
+        <td th:text="${record.sfid}"></td>
         <td th:text="${record.staffId}"></td>
         <td th:text="${record.name}"></td>
         <td th:text="${record.age}"></td>
