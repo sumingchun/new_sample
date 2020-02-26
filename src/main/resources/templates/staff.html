@@ -69,8 +69,8 @@
     </thead>
     <tbody>
       <tr th:each="record : ${records}"} >
-        <td><input type="submit" name="btn_edit" value="編集" th:id="${record.sfid}"/></td>
-        <td><input type="submit" name="btn_delete" value="削除" /></td>
+        <td><input type="submit" name="btn_edit" value="編集" th:attr="onclick='alert(' + ${record.staffId} + ');'" /></td>
+        <td><input type="submit" name="btn_delete" value="削除" th:attr="onclick='alert(' + ${record.staffId} + ');'" /></td>
         <td th:text="${record.sfid}"></td>
         <td th:text="${record.staffId}"></td>
         <td th:text="${record.name}"></td>
