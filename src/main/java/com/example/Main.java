@@ -29,6 +29,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -121,10 +122,6 @@ public class Main {
     }
   }
 
-  @RequestMapping(value = "/staff", method = RequestMethod.POST)
-  public String executeLogin(@ModelAttribute("StaffFrom") InputForm form, Model model) {
-    // formに入力した値が入っているはず
-  }
 
   @Bean
   public DataSource dataSource() throws SQLException {
