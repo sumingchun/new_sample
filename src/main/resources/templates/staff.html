@@ -19,6 +19,15 @@
   </style>
 
   <script>
+    function EditStaff($sfid,$staffid,$name,$age) {
+      document.getElementsByName("text_sfid").innertext = $sfid;
+      document.getElementsByName("text_flag").innertext = "2";
+      document.getElementsByName("text_staffId").innertext = $staffid;
+      document.getElementsByName("text_name").innertext = $name;
+      document.getElementsByName("text_age").innertext = $age;
+
+      document.getElementsByName("btn_new").value = "保存";
+    };
     function delStaff($sfid) {
       window.confirm('このStaff削除しますか？');
       var linkStr = "/testform?text_sfid=" + $sfid + "&text_flag=3&text_staffId=&text_name=&text_age="
@@ -41,7 +50,7 @@
         <div>
             <label>Flag:</label>
         </div>
-        <input type="text" name="text_flag" value="" readonly="readonly"/>
+        <input type="text" name="text_flag" value="1" readonly="readonly"/>
       </div>
         <div>
           <div>
@@ -89,7 +98,7 @@
     </thead>
     <tbody>
       <tr th:each="record : ${records}"} >
-        <td><input type="submit" name="btn_edit" value="編集" th:attr="onclick='alert(\'' + ${record.sfid} + '\');'" /></td>
+        <td><input type="submit" name="btn_edit" value="編集" th:attr="onclick='editStaff(\'' + ${record.sfid} + '\',\'' + ${record.staffId} + '\',\'' + ${record.name} + '\',\'' + ${record.age} + '\');'" /></td>
         <td><input type="submit" name="btn_delete" value="削除" th:attr="onclick='delStaff(\'' + ${record.sfid} + '\');'"  /></td>
         <td th:text="${record.sfid}"></td>
         <td th:text="${record.staffId}"></td>
