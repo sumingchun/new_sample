@@ -39,6 +39,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.ui.Model;
+import com.example.StaffForm;
 
 @Controller
 @SpringBootApplication
@@ -118,6 +119,11 @@ public class Main {
       model.addAttribute("message", e.getMessage());
       return "error";
     }
+  }
+
+  @RequestMapping(value = "/staff", method = RequestMethod.POST)
+  public String executeLogin(@ModelAttribute("StaffFrom") InputForm form, Model model) {
+    // formに入力した値が入っているはず
   }
 
   @Bean
