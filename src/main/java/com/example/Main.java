@@ -166,19 +166,16 @@ public class Main {
       Statement stmt = connection.createStatement();
       stmt.execute("set search_path=salesforce, public;");
 
-      if (flag == "1"){
+      if (flag.equals("1")){
         stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('"+ staffid +"', '"+ name +"', '"+ age +"');");
-      }else if(flag == "2"){
+      }else if(flag.equals("2")){
 
       }
-      else if(flag == "3"){
+      else if(flag.equals("3")){
         stmt.executeUpdate("Delete from staff__c where sfid = "+ sfid +";");
-        
       }
       
-      model.addAttribute("message", flag.equals("3"));
-      return "error";
-      //return "redirect:/staff";
+      return "redirect:/staff";
 
     } catch (Exception e) {
       model.addAttribute("message", e.getMessage());
