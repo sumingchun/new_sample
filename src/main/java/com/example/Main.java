@@ -172,7 +172,7 @@ public class Main {
 
       }
       else if(flag == "3"){
-        stmt.executeUpdate("Delete from staff__c where sfid = '"+ sfid +"';");
+        stmt.execute("Delete from staff__c where sfid = '"+ sfid +"';");
       }
       
       return "redirect:/staff";
