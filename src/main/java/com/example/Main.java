@@ -172,7 +172,9 @@ public class Main {
 
       }
       else if(flag == "3"){
-        stmt.executeUpdate("Delete from staff__c where sfid = "+ sfid +";");
+        int aaa = stmt.executeUpdate("Delete from staff__c where sfid = "+ sfid +";");
+        model.addAttribute("message", aaa);
+        return "error";
       }
       
       return "redirect:/staff";
