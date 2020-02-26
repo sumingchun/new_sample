@@ -19,6 +19,40 @@
   </style>
 
 <div class="container">
+  <h1>New Staff</h1>
+  <form method="post" th:action="@{/new}" modelAttribute="StaffForm" >
+  <div>
+    <div>
+        <div>
+          <div>
+            <label>Staff Id</label>
+          </div>
+          <input type="text" name="text_staffId" value="" />
+        </div>
+      </div>
+      <div>
+        <div>
+          <div>
+            <label>Name</label>
+          </div>
+          <input type="text" name="text_name" value="" />
+        </div>
+    </div>
+    <div>
+      <div>
+        <div>
+          <label>Age</label>
+        </div>
+        <input type="text" name="text_age" value="" />
+      </div>
+    </div>
+    <div>
+      <div>
+        <input type="submit" name="btn_new" value="新規" />
+      </div>
+    </div>
+  </div>
+  </form>
 
   <h1>Staff List</h1>
   <input type="button" onclick="location.href='./new'" value="新規作成">
