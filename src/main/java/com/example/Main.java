@@ -39,8 +39,6 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import com.example.Staff;
 
 @Controller
 @SpringBootApplication
