@@ -129,7 +129,7 @@ public class Main {
       Statement stmt = connection.createStatement();
       //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
       stmt.execute("set search_path=salesforce, public;");
-      stmt.executeUpdate("INSERT INTO products (staffid__c, name, age__c) VALUES ('0007', 'Cheese', '39');");
+      stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('0007', 'Cheese', '39');");
       //ResultSet rs = stmt.executeQuery("SELECT sfid,staffid__c,name,age__c FROM staff__c order by staffid__c desc");
 
         //staff.setSfid(rs.getString("sfid"));
@@ -138,7 +138,7 @@ public class Main {
         //staff.setAge(rs.getString("age__c"));
 
       //model.addAttribute("records", output);
-      return "staff";
+      return "redirect:/staff";
     } catch (Exception e) {
       model.addAttribute("message", e.getMessage());
       return "error";
