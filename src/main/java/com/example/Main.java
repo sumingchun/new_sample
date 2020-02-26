@@ -96,7 +96,7 @@ public class Main {
     }
   }
 
-  @ModelAttribute // (2)
+  @ModelAttribute
   public StaffForm setUpStaffForm() {
     StaffForm form = new StaffForm();
     return form;
@@ -162,8 +162,9 @@ public class Main {
       else
       {
         stmt.execute("set search_path=salesforce, public;");
-        stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('0009', 'Cheese', '39');");
+        stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('"+ form.getStaffId() +"', '"+ form.getName() +"', '"+ form.getAge() +"');");
 
+        //return "new";
         return "redirect:/staff";
       }
     } catch (Exception e) {
