@@ -158,12 +158,14 @@ public class Main {
       
       if (form.getStaffId() == "") {
         return "new";
-     }
+      }
+      else
+      {
+        stmt.execute("set search_path=salesforce, public;");
+        stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('0009', 'Cheese', '39');");
 
-      stmt.execute("set search_path=salesforce, public;");
-      stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('0008', 'Cheese', '39');");
-
-      return "redirect:/staff";
+        return "redirect:/staff";
+      }
     } catch (Exception e) {
       model.addAttribute("message", e.getMessage());
       return "error";
