@@ -144,6 +144,10 @@ public class Main {
 //      return "error";
 //    }
 //  }
+  @GetMapping("new")
+  public String newStaff(@ModelAttribute("staff") Staff staff, Model model) {
+  return "new";
+  }
 
   @Bean
   public DataSource dataSource() throws SQLException {
