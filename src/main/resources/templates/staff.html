@@ -20,13 +20,13 @@
 
   <script>
     function editStaff($sfid,$staffid,$name,$age) {
-      document.getElementsByName("text_sfid").value = $sfid;
-      document.getElementsByName("text_flag").value = "2";
-      document.getElementsByName("text_staffId").value = $staffid;
-      document.getElementsByName("text_name").value = $name;
-      document.getElementsByName("text_age").value = $age;
+      document.getElementsByName("text_sfid")[0].value = $sfid;
+      document.getElementsByName("text_flag")[0].value = "2";
+      document.getElementsByName("text_staffId")[0].value = $staffid;
+      document.getElementsByName("text_name")[0].value = $name;
+      document.getElementsByName("text_age")[0].value = $age;
 
-      document.getElementsByName("btn_new").value = "保存";
+      document.getElementsByName("btn_new")[0].value = "保存";
     };
     function delStaff($sfid) {
       window.confirm('このStaff削除しますか？');
