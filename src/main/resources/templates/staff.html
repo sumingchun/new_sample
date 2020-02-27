@@ -29,9 +29,11 @@
       document.getElementsByName("btn_new")[0].value = "保存";
     };
     function delStaff($sfid) {
-      window.confirm('このStaff削除しますか？');
-      var linkStr = "/testform?text_sfid=" + $sfid + "&text_flag=3&text_staffId=&text_name=&text_age="
-      document.location.href = linkStr;
+      if (window.confirm('このStaff削除しますか？'))
+      {
+        var linkStr = "/testform?text_sfid=" + $sfid + "&text_flag=3&text_staffId=&text_name=&text_age="
+        document.location.href = linkStr;  
+      }
     }
   </script>
 
