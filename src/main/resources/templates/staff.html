@@ -20,11 +20,11 @@
 
   <script>
     function editStaff($sfid,$staffid,$name,$age) {
-      document.getElementsByName("text_sfid").innertext = $sfid;
-      document.getElementsByName("text_flag").innertext = "2";
-      document.getElementsByName("text_staffId").innertext = $staffid;
-      document.getElementsByName("text_name").innertext = $name;
-      document.getElementsByName("text_age").innertext = $age;
+      document.getElementsByName("text_sfid").value = $sfid;
+      document.getElementsByName("text_flag").value = "2";
+      document.getElementsByName("text_staffId").value = $staffid;
+      document.getElementsByName("text_name").value = $name;
+      document.getElementsByName("text_age").value = $age;
 
       document.getElementsByName("btn_new").value = "保存";
     };
