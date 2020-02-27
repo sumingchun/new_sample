@@ -129,28 +129,6 @@ public class Main {
     }
   }
 
-//  @GetMapping("staff")
-//  public String newStaff(@ModelAttribute("staff") Staff staff, Model model) {
-//    try (Connection connection = dataSource.getConnection()) {
-//      Statement stmt = connection.createStatement();
-//      //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-//      stmt.execute("set search_path=salesforce, public;");
-//      stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('0007', 'Cheese', '39');");
-//      //ResultSet rs = stmt.executeQuery("SELECT sfid,staffid__c,name,age__c FROM staff__c order by staffid__c desc");
-//
-//        //staff.setSfid(rs.getString("sfid"));
-//        //staff.setStaffId(rs.getString("staffid__c"));
-//        //staff.setName(rs.getString("name"));
-//        //staff.setAge(rs.getString("age__c"));
-//
-//      //model.addAttribute("records", output);
-//      return "redirect:/staff";
-//    } catch (Exception e) {
-//      model.addAttribute("message", e.getMessage());
-//      return "error";
-//    }
-//  }
-
   @RequestMapping(value = "testform", method = RequestMethod.GET)
   public String newStaff(@RequestParam(name = "text_sfid") String sfid, 
                          @RequestParam(name = "text_flag") String flag, 
@@ -166,7 +144,7 @@ public class Main {
       if (flag.equals("1")){
         stmt.executeUpdate("INSERT INTO staff__c (staffid__c, name, age__c) VALUES ('"+ staffid +"', '"+ name +"', '"+ age +"');");
       }else if(flag.equals("2")){
-
+        stmt.executeUpdate("UPDATE staff__c SET staffid__c = '"+ staffid +"', name = '"+ name +"', age__c = '"+ age +"' WHERE sfid = '"+ sfid +"';");
       }
       else if(flag.equals("3")){
         stmt.executeUpdate("Delete from staff__c where sfid = '"+ sfid +"';");
